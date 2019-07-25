@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/text_view_collapsed_1"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/timestamp_textView"
+            style="@style/TextAppearance.Compat.Notification.Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            android:text="10:34 am" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sender_textView"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:visibility="visible"
+        android:text="OTP from HDFC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/otp_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.Compat.Notification.Info"
+            android:layout_marginTop="0dp"
+            android:textSize="36sp"
+            android:layout_weight="10"
+            android:text="4 5 5 6 7 6 8 9"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/copy_imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="center"
+                android:layout_marginTop="4dp"
+                android:layout_weight="0"
+                android:background="@android:color/transparent"
+                android:foregroundTint="@color/colorPrimary"
+                android:foreground="@drawable/outline_file_copy_white_36dp"
+                android:contentDescription="Copy Button" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.Compat.Notification.Info"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:layout_weight="10"
+                android:text="Copy"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
