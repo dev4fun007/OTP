@@ -8,8 +8,10 @@ import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
+import bytes.sync.util.Constants;
 import bytes.sync.util.NotificationBuilderUtil;
 import bytes.sync.util.OtpExtractor;
+import bytes.sync.util.SharedPreferenceHelper;
 
 public class SmsReceiver extends BroadcastReceiver {
 
@@ -18,6 +20,9 @@ public class SmsReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        if(!SharedPreferenceHelper.getInstance(context).getSmartNotificationEnabled())
+            return;
 
         Bundle bundle = intent.getExtras();
         if(bundle != null) {
@@ -39,6 +44,12 @@ public class SmsReceiver extends BroadcastReceiver {
                 NotificationBuilderUtil notificationBuilderUtil = new NotificationBuilderUtil();
                 notificationBuilderUtil.showNotification(context, otp, sender);
                 Log.d(TAG,"OTP: " + otp);
+
+                if(SharedPreferenceHelper.getInstance(context).getOtpTTS()) {
+                    Intent speakIntent = new Intent(context, SpeakOTPService.class);
+                    speakIntent.putExtra(Constants.OTP_EXTRA, otp);
+                    context.startService(speakIntent);
+                }
             }
         }
 

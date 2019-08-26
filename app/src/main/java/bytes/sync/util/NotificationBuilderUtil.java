@@ -80,25 +80,11 @@ public class NotificationBuilderUtil {
     private String getFormattedOTP(String otp) {
         if(otp.length() > 6) {
             //Add single space
-            return addSpace(otp, 1);
+            return OTPFormatter.addSpace(otp, 1);
         } else {
             //Add 2 spaces
-            return addSpace(otp, 2);
+            return OTPFormatter.addSpace(otp, 2);
         }
-    }
-
-    private String addSpace(String otp, int space) {
-        StringBuilder stringBuilder = new StringBuilder();
-        if(space == 1)
-            return otp.replace("", " ").trim();
-
-        for(int i = 0; i < otp.length(); i++) {
-            stringBuilder.append(otp.charAt(i));
-            for(int j = 0; j < space; j++) {
-                stringBuilder.append(" ");
-            }
-        }
-        return stringBuilder.toString().trim();
     }
 
 }
